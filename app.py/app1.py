@@ -4,7 +4,7 @@ def calculate_total(price, quantity):
     return round(price * quantity, 2)
 
 def main():
-    print("--- Shopping Bill Calculator ---")
+    print("Shopping Bill Calculator")
     try:
         price = float(input("Enter item price: "))
         quantity = int(input("Enter item quantity: "))
