@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopping-bill-deployment
+  labels:
+    app: shopping-bill
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shopping-bill
+  template:
+    metadata:
+      labels:
+        app: shopping-bill
+    spec:
+      containers:
+      - name: shopping-bill-app
+        image: logarakshithan/shopping-bill:latest
+        imagePullPolicy: Always
+        stdin: true
+        tty: true
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shopping-bill-service
+spec:
+  type: ClusterIP
+  selector:
+    app: shopping-bill
+  ports:
+    - port: 80
+      targetPort: 80
